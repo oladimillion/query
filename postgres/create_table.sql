@@ -14,3 +14,13 @@ CREATE TABLE criteria_set_value_table (
     join_id integer NOT NULL REFERENCES "join" DEFERRABLE INITIALLY DEFERRED,
     line integer NOT NULL
 );
+
+ create table if not exists city (
+    id serial primary key,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone,
+    country_id character varying(3) REFERENCES "country" DEFERRABLE INITIALLY DEFERRED,
+    state_id integer REFERENCES "state" DEFERRABLE INITIALLY DEFERRED,
+    long_description_eng character varying(70),
+    long_description_deu character varying(70)
+ );
